@@ -58,6 +58,13 @@ export default function RootLayout() {
                         }}
                     />
                     <Drawer.Screen
+                        name="favorites"
+                        options={{
+                            title: "Favorites",
+                            drawerLabel: "Favorites",
+                        }}
+                    />
+                    <Drawer.Screen
                         name="category"
                         options={{
                             title: "Category",

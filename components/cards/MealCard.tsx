@@ -15,12 +15,16 @@ interface MealCardProps {
 
 const MealCard: React.FC<MealCardProps> = ({ id, title, url, onPress }) => {
     const dispatch = useAppDispatch();
-    const favorites = useAppSelector((state) => state.favoritesReducer.ids);
-    const isFavorite = favorites.includes(id);
+    const { favorites = [] } = useAppSelector((state) => state.favoritesReducer);
+    const isFavorite = favorites?.some(meal => meal.idMeal === id) || false;
 
     const handleFavorite = (e: GestureResponderEvent) => {
         e.stopPropagation();
-        dispatch(toggleFavorite(id));
+        dispatch(toggleFavorite({
+            idMeal: id,
+            strMeal: title,
+            strMealThumb: url
+        }));
     };
 
     return (

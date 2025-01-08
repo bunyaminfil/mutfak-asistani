@@ -14,6 +14,7 @@ export function CustomDrawerContent(props: any) {
     const menuItems = [
         { name: "Home", icon: "home", route: "index" },
         { name: "Profile", icon: "person", route: "profile" },
+        { name: "Favorites", icon: "favorite", route: "favorites" },
     ];
 
     return (

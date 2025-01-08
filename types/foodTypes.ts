@@ -12,6 +12,7 @@ export interface IFoods {
     results: { name: string; url: string }[];
 }
 export interface IMeal {
+    idMeal: string;
     strMeal: string;
     strMealThumb: string;
     strInstructions: string;

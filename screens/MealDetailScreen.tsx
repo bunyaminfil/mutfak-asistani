@@ -25,8 +25,8 @@ const MealDetailScreen: React.FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const { mealDetails, loading, error } = useAppSelector((state) => state.foodsReducer);
-    const favorites = useAppSelector((state) => state.favoritesReducer.ids);
-    const isFavorite = favorites.includes(id as string);
+    const { favorites = [] } = useAppSelector((state) => state.favoritesReducer);
+    const isFavorite = favorites?.some((favorite) => favorite.idMeal === id) || false;
 
     useEffect(() => {
         if (id) {
@@ -54,7 +54,15 @@ const MealDetailScreen: React.FC = () => {
     };
 
     const handleFavorite = () => {
-        dispatch(toggleFavorite(id as string));
+        if (mealDetails) {
+            dispatch(
+                toggleFavorite({
+                    idMeal: mealDetails.idMeal,
+                    strMeal: mealDetails.strMeal,
+                    strMealThumb: mealDetails.strMealThumb,
+                }),
+            );
+        }
     };
 
     if (loading === LoadingTypes.loading) {
