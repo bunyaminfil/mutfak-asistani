@@ -36,6 +36,7 @@ const CategoryFoodsScreen: React.FC = () => {
 
     const renderItem = ({ item }: any) => (
         <MealCard 
+            id={item.idMeal}
             title={item.strMeal} 
             url={item.strMealThumb} 
             onPress={() => handleMealPress(item.idMeal)} 

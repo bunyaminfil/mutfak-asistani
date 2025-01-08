@@ -12,6 +12,7 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { hp, wp } from "@/helpers/screenResize";
 import { MaterialIcons } from "@expo/vector-icons";
+import { toggleFavorite } from "@/store/redux/slices/favorites";
 
 interface Ingredient {
     name: string;
@@ -24,6 +25,8 @@ const MealDetailScreen: React.FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const { mealDetails, loading, error } = useAppSelector((state) => state.foodsReducer);
+    const favorites = useAppSelector((state) => state.favoritesReducer.ids);
+    const isFavorite = favorites.includes(id as string);
 
     useEffect(() => {
         if (id) {
@@ -48,6 +51,10 @@ const MealDetailScreen: React.FC = () => {
             }
         }
         return ingredients;
+    };
+
+    const handleFavorite = () => {
+        dispatch(toggleFavorite(id as string));
     };
 
     if (loading === LoadingTypes.loading) {
@@ -131,6 +138,15 @@ const MealDetailScreen: React.FC = () => {
             fontSize: wp(4),
             color: Colors[theme].text,
         },
+        favoriteButton: {
+            position: "absolute",
+            top: wp(4),
+            right: wp(4),
+            zIndex: 1,
+            backgroundColor: "rgba(0,0,0,0.3)",
+            padding: wp(2),
+            borderRadius: wp(5),
+        },
     });
 
     return (
@@ -139,6 +155,13 @@ const MealDetailScreen: React.FC = () => {
                 <View style={styles.imageContainer}>
                     <Pressable style={styles.backButton} onPress={handleBack}>
                         <MaterialIcons name="arrow-back" size={wp(6)} color="#fff" />
+                    </Pressable>
+                    <Pressable style={styles.favoriteButton} onPress={handleFavorite}>
+                        <MaterialIcons
+                            name={isFavorite ? "favorite" : "favorite-border"}
+                            size={wp(6)}
+                            color={isFavorite ? "#ff4081" : "#fff"}
+                        />
                     </Pressable>
                     <ImageBackground source={{ uri: mealDetails.strMealThumb }} style={styles.image} resizeMode="cover">
                         <View style={styles.overlay}>
