@@ -1,5 +1,7 @@
 export type InitStateFood = {
     foods: [];
+    category: [];
+    mealDetails: null | IMeal;
     loading: number;
     error: null | string;
 };
@@ -8,4 +10,9 @@ export interface IFoods {
     next: string | null;
     previous: string | null;
     results: { name: string; url: string }[];
+}
+export interface IMeal {
+    strMeal: string;
+    strMealThumb: string;
+    strInstructions: string;
 }

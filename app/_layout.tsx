@@ -37,7 +37,7 @@ export default function RootLayout() {
                     drawerContent={(props) => <CustomDrawerContent {...props} />}
                     screenOptions={({ navigation }) => ({
                         headerLeft: () => (
-                            <Pressable onPress={() => navigation.openDrawer()} style={{ marginLeft: 16 }}>
+                            <Pressable onPress={() => navigation.openDrawer()} style={{ margin: 16 }}>
                                 <MaterialIcons name="menu" size={24} color={colorScheme === "dark" ? "#fff" : "#000"} />
                             </Pressable>
                         ),
@@ -51,17 +51,24 @@ export default function RootLayout() {
                         }}
                     />
                     <Drawer.Screen
-                        name="foods"
-                        options={{
-                            title: "Foods",
-                            drawerLabel: "Foods",
-                        }}
-                    />
-                    <Drawer.Screen
                         name="profile"
                         options={{
                             title: "Profile",
                             drawerLabel: "Profile",
+                        }}
+                    />
+                    <Drawer.Screen
+                        name="category"
+                        options={{
+                            title: "Category",
+                            drawerItemStyle: { display: "none" },
+                        }}
+                    />
+                    <Drawer.Screen
+                        name="meal"
+                        options={{
+                            title: "Meal Details",
+                            drawerItemStyle: { display: "none" },
                         }}
                     />
                     <Drawer.Screen name="+not-found" options={{ drawerItemStyle: { display: "none" } }} />

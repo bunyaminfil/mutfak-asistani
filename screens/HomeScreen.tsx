@@ -12,6 +12,7 @@ import ErrorOverlay from "@/components/ui/ErrorOverlay";
 import FoodCard from "@/components/cards/FoodCard";
 import { Text } from "@/components/ui/Text";
 import MyCarousel from "@/components/Carousel";
+import { useRouter } from 'expo-router';
 
 interface FoodItem {
     strCategory: string;
@@ -24,13 +25,25 @@ const HomeScreen: React.FC = () => {
     const theme = useColorScheme() ?? "light";
     const dispatch = useAppDispatch();
     const { foods, loading, error } = useAppSelector((state) => state.foodsReducer);
+    const router = useRouter();
 
     useEffect(() => {
-        dispatch(getMenu(1000));
+        dispatch(getMenu());
     }, [dispatch]);
 
+    const handleCardPress = (category: string) => {
+        router.push({
+            pathname: '/category',
+            params: { name: category }
+        });
+    };
+
     const renderGridItem = ({ item }: { item: FoodItem }) => (
-        <FoodCard title={item.strCategory} url={item.strCategoryThumb} onPress={() => {}} />
+        <FoodCard 
+            title={item.strCategory} 
+            url={item.strCategoryThumb} 
+            onPress={() => handleCardPress(item.strCategory)} 
+        />
     );
 
     const styles = StyleSheet.create({
@@ -45,13 +58,18 @@ const HomeScreen: React.FC = () => {
             alignItems: "center",
             justifyContent: "center",
         },
+        flatListContainer: {
+            marginHorizontal: hp(1),
+
+        },
         listContainer: {
             marginHorizontal: hp(1),
+            marginTop: hp(2),
         },
         sectionTitle: {
             fontSize: wp(5),
             fontWeight: "bold",
-            marginVertical: hp(2),
+            marginBottom: hp(2),
             marginLeft: wp(2),
             alignSelf: "flex-start",
         },
@@ -88,6 +106,7 @@ const HomeScreen: React.FC = () => {
                 renderItem={renderGridItem}
                 keyExtractor={(item) => item.idCategory}
                 numColumns={2}
+                style={styles.flatListContainer}
             />
         </SafeAreaView>
     );
