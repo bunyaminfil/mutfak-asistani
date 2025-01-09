@@ -23,6 +23,7 @@ export const Languages = {
             favorites: "Favorites",
             profile: "Profile",
             market: "Shopping List",
+            notifications: "Notifications",
         },
         market: {
             title: "Shopping List",
@@ -30,6 +31,23 @@ export const Languages = {
             quantity: "Quantity",
             clearList: "Clear List",
             addItem: "Add Item"
+        },
+        notifications: {
+            title: "Notifications",
+            meal: "Meal",
+            market: "Shopping",
+            general: "General",
+            add: "Add Notification",
+            mealTitle: "Meal Time",
+            mealBody: "Time to prepare your meal!",
+            marketTitle: "Shopping Time",
+            marketBody: "Don't forget to check your shopping list!",
+            generalTitle: "Reminder",
+            generalBody: "You have a notification!",
+            deleteTitle: "Delete Notification",
+            deleteMessage: "Are you sure you want to delete this notification?",
+            delete: "Delete",
+            cancel: "Cancel",
         }
     },
     tr: {
@@ -56,6 +74,7 @@ export const Languages = {
             favorites: "Favoriler",
             profile: "Profil",
             market: "Alışveriş Listesi",
+            notifications: "Bildirimler",
         },
         market: {
             title: "Alışveriş Listesi",
@@ -63,6 +82,23 @@ export const Languages = {
             quantity: "Miktar",
             clearList: "Listeyi Temizle",
             addItem: "Ürün Ekle"
+        },
+        notifications: {
+            title: "Bildirimler",
+            meal: "Yemek",
+            market: "Alışveriş",
+            general: "Genel",
+            add: "Bildirim Ekle",
+            mealTitle: "Yemek Vakti",
+            mealBody: "Yemeğinizi hazırlama vakti!",
+            marketTitle: "Alışveriş Vakti",
+            marketBody: "Alışveriş listenizi kontrol etmeyi unutmayın!",
+            generalTitle: "Hatırlatma",
+            generalBody: "Bir bildiriminiz var!",
+            deleteTitle: "Bildirim Sil",
+            deleteMessage: "Bu bildirimi silmek istediğinize emin misiniz?",
+            delete: "Sil",
+            cancel: "İptal",
         }
     },
 };

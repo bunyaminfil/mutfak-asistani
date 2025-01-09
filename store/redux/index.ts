@@ -7,10 +7,12 @@ import storage from "@react-native-async-storage/async-storage";
 import foodsReducer from "./slices/foods";
 import favoritesReducer from "./slices/favorites";
 import marketReducer from "./slices/market";
+import notificationsReducer from "./slices/notifications";
 const silces = {
     foodsReducer,
     favoritesReducer,
     marketReducer,
+    notificationsReducer,
 };
 
 // Define the persist config
