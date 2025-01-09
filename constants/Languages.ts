@@ -48,6 +48,10 @@ export const Languages = {
             deleteMessage: "Are you sure you want to delete this notification?",
             delete: "Delete",
             cancel: "Cancel",
+            customTitle: "Notification Title",
+            customMessage: "Notification Message",
+            error: "Input Required",
+            errorMessage: "Please enter both title and message for custom notifications",
         }
     },
     tr: {
@@ -99,6 +103,10 @@ export const Languages = {
             deleteMessage: "Bu bildirimi silmek istediğinize emin misiniz?",
             delete: "Sil",
             cancel: "İptal",
+            customTitle: "Bildirim Başlığı",
+            customMessage: "Bildirim Mesajı",
+            error: "Giriş Gerekli",
+            errorMessage: "Özel bildirimler için lütfen başlık ve mesaj giriniz",
         }
     },
 };

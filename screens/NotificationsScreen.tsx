@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, FlatList, Pressable, Switch, Platform, Alert } from "react-native";
+import { StyleSheet, View, FlatList, Pressable, Switch, Platform, Alert, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Text } from "@/components/ui/Text";
@@ -25,6 +25,8 @@ const NotificationsScreen: React.FC = () => {
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [selectedType, setSelectedType] = useState<"meal" | "market" | "general">("general");
+    const [customTitle, setCustomTitle] = useState("");
+    const [customBody, setCustomBody] = useState("");
 
     useEffect(() => {
         requestNotificationPermissions();
@@ -40,9 +42,14 @@ const NotificationsScreen: React.FC = () => {
             time: timeString,
             enabled: true,
             days: ["monday", "tuesday", "wednesday", "thursday", "friday"],
-            title: t(`notifications.${selectedType}Title`),
-            body: t(`notifications.${selectedType}Body`),
+            title: selectedType === "general" ? customTitle : t(`notifications.${selectedType}Title`),
+            body: selectedType === "general" ? customBody : t(`notifications.${selectedType}Body`),
         };
+
+        if (selectedType === "general" && (!customTitle.trim() || !customBody.trim())) {
+            Alert.alert(t("notifications.error"), t("notifications.errorMessage"));
+            return;
+        }
 
         dispatch(addNotification(newNotification));
 
@@ -54,6 +61,10 @@ const NotificationsScreen: React.FC = () => {
         };
 
         await scheduleNotification(newNotification.title, newNotification.body, trigger);
+
+        // Clear custom inputs after adding
+        setCustomTitle("");
+        setCustomBody("");
     };
 
     const renderItem = ({ item }: { item: NotificationItem }) => (
@@ -68,6 +79,7 @@ const NotificationsScreen: React.FC = () => {
                 />
                 <View style={styles.notificationDetails}>
                     <Text style={styles.notificationTitle}>{item.title}</Text>
+                    <Text style={styles.notificationMessage}>{item.body}</Text>
                     <Text style={styles.notificationTime}>
                         {item.time.split(':').slice(0, 2).join(':') + ' ' + 
                         (parseInt(item.time.split(':')[0]) >= 12 ? 'PM' : 'AM')}
@@ -140,6 +152,24 @@ const NotificationsScreen: React.FC = () => {
                             if (date) setSelectedTime(date);
                         }}
                     />
+                )}
+
+                {selectedType === "general" && (
+                    <View style={styles.customInputs}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder={t("notifications.customTitle")}
+                            value={customTitle}
+                            onChangeText={setCustomTitle}
+                        />
+                        <TextInput
+                            style={[styles.input, styles.messageInput]}
+                            placeholder={t("notifications.customMessage")}
+                            value={customBody}
+                            onChangeText={setCustomBody}
+                            multiline
+                        />
+                    </View>
                 )}
 
                 <Pressable style={styles.addButton} onPress={handleAddNotification}>
@@ -237,15 +267,24 @@ const styles = StyleSheet.create({
     },
     notificationInfo: {
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         flex: 1,
     },
     notificationDetails: {
         marginLeft: wp(3),
+        flex: 1,
     },
     notificationTitle: {
         fontSize: wp(4),
         fontWeight: "500",
+        flexWrap: "wrap",
+    },
+    notificationMessage: {
+        fontSize: wp(3.5),
+        color: "#666",
+        marginTop: hp(0.5),
+        flexWrap: "wrap",
+        marginRight: wp(2),
     },
     notificationTime: {
         fontSize: wp(3.5),
@@ -259,6 +298,21 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         padding: wp(1),
+    },
+    customInputs: {
+        gap: hp(1),
+        marginBottom: hp(2),
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: wp(2),
+        padding: wp(2),
+        fontSize: wp(4),
+    },
+    messageInput: {
+        height: hp(10),
+        textAlignVertical: "top",
     },
 });
 
