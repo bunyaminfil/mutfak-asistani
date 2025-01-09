@@ -12,7 +12,8 @@ import ErrorOverlay from "@/components/ui/ErrorOverlay";
 import FoodCard from "@/components/cards/FoodCard";
 import { Text } from "@/components/ui/Text";
 import MyCarousel from "@/components/Carousel";
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface FoodItem {
     strCategory: string;
@@ -22,6 +23,7 @@ interface FoodItem {
 }
 
 const HomeScreen: React.FC = () => {
+    const {  t } = useLanguage();
     const theme = useColorScheme() ?? "light";
     const dispatch = useAppDispatch();
     const { foods, loading, error } = useAppSelector((state) => state.foodsReducer);
@@ -33,16 +35,16 @@ const HomeScreen: React.FC = () => {
 
     const handleCardPress = (category: string) => {
         router.push({
-            pathname: '/category',
-            params: { name: category }
+            pathname: "/category",
+            params: { name: category },
         });
     };
 
     const renderGridItem = ({ item }: { item: FoodItem }) => (
-        <FoodCard 
-            title={item.strCategory} 
-            url={item.strCategoryThumb} 
-            onPress={() => handleCardPress(item.strCategory)} 
+        <FoodCard
+            title={item.strCategory}
+            url={item.strCategoryThumb}
+            onPress={() => handleCardPress(item.strCategory)}
         />
     );
 
@@ -60,7 +62,6 @@ const HomeScreen: React.FC = () => {
         },
         flatListContainer: {
             marginHorizontal: hp(1),
-
         },
         listContainer: {
             marginHorizontal: hp(1),
@@ -89,7 +90,7 @@ const HomeScreen: React.FC = () => {
                 ListHeaderComponent={
                     <>
                         <View style={styles.carouselContainer}>
-                            <Text style={styles.sectionTitle}>Featured Categories</Text>
+                            <Text style={styles.sectionTitle}>{t("home.featuredCategories")}</Text>
                             <MyCarousel
                                 data={foods.slice(0, 5).map((food: FoodItem) => ({
                                     title: food.strCategory,
@@ -98,7 +99,7 @@ const HomeScreen: React.FC = () => {
                             />
                         </View>
                         <View style={styles.listContainer}>
-                            <Text style={styles.sectionTitle}>All Categories</Text>
+                            <Text style={styles.sectionTitle}>{t("home.allCategories")}</Text>
                         </View>
                     </>
                 }

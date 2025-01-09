@@ -11,6 +11,7 @@ import { Pressable } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "@/store/redux";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,56 +33,62 @@ export default function RootLayout() {
 
     return (
         <Provider store={store}>
-            <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-                <Drawer
-                    drawerContent={(props) => <CustomDrawerContent {...props} />}
-                    screenOptions={({ navigation }) => ({
-                        headerLeft: () => (
-                            <Pressable onPress={() => navigation.openDrawer()} style={{ margin: 16 }}>
-                                <MaterialIcons name="menu" size={24} color={colorScheme === "dark" ? "#fff" : "#000"} />
-                            </Pressable>
-                        ),
-                    })}
-                >
-                    <Drawer.Screen
-                        name="index"
-                        options={{
-                            title: "Home",
-                            drawerLabel: "Home",
-                        }}
-                    />
-                    <Drawer.Screen
-                        name="profile"
-                        options={{
-                            title: "Profile",
-                            drawerLabel: "Profile",
-                        }}
-                    />
-                    <Drawer.Screen
-                        name="favorites"
-                        options={{
-                            title: "Favorites",
-                            drawerLabel: "Favorites",
-                        }}
-                    />
-                    <Drawer.Screen
-                        name="category"
-                        options={{
-                            title: "Category",
-                            drawerItemStyle: { display: "none" },
-                        }}
-                    />
-                    <Drawer.Screen
-                        name="meal"
-                        options={{
-                            title: "Meal Details",
-                            drawerItemStyle: { display: "none" },
-                        }}
-                    />
-                    <Drawer.Screen name="+not-found" options={{ drawerItemStyle: { display: "none" } }} />
-                </Drawer>
-                <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-            </ThemeProvider>
+            <LanguageProvider>
+                <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+                    <Drawer
+                        drawerContent={(props) => <CustomDrawerContent {...props} />}
+                        screenOptions={({ navigation }) => ({
+                            headerLeft: () => (
+                                <Pressable onPress={() => navigation.openDrawer()} style={{ margin: 16 }}>
+                                    <MaterialIcons
+                                        name="menu"
+                                        size={24}
+                                        color={colorScheme === "dark" ? "#fff" : "#000"}
+                                    />
+                                </Pressable>
+                            ),
+                        })}
+                    >
+                        <Drawer.Screen
+                            name="index"
+                            options={{
+                                title: "Home",
+                                drawerLabel: "Home",
+                            }}
+                        />
+                        <Drawer.Screen
+                            name="profile"
+                            options={{
+                                title: "Profile",
+                                drawerLabel: "Profile",
+                            }}
+                        />
+                        <Drawer.Screen
+                            name="favorites"
+                            options={{
+                                title: "Favorites",
+                                drawerLabel: "Favorites",
+                            }}
+                        />
+                        <Drawer.Screen
+                            name="category"
+                            options={{
+                                title: "Category",
+                                drawerItemStyle: { display: "none" },
+                            }}
+                        />
+                        <Drawer.Screen
+                            name="meal"
+                            options={{
+                                title: "Meal Details",
+                                drawerItemStyle: { display: "none" },
+                            }}
+                        />
+                        <Drawer.Screen name="+not-found" options={{ drawerItemStyle: { display: "none" } }} />
+                    </Drawer>
+                    <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+                </ThemeProvider>
+            </LanguageProvider>
         </Provider>
     );
 }

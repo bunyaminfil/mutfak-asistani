@@ -12,9 +12,11 @@ import { Text } from "@/components/ui/Text";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { hp, wp } from "@/helpers/screenResize";
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CategoryFoodsScreen: React.FC = () => {
+    const { t } = useLanguage();
     const { name } = useLocalSearchParams();
     const theme = useColorScheme() ?? "light";
     const dispatch = useAppDispatch();
@@ -29,17 +31,17 @@ const CategoryFoodsScreen: React.FC = () => {
 
     const handleMealPress = (mealId: string) => {
         router.push({
-            pathname: '/meal',
-            params: { id: mealId }
+            pathname: "/meal",
+            params: { id: mealId },
         });
     };
 
     const renderItem = ({ item }: any) => (
-        <MealCard 
+        <MealCard
             id={item.idMeal}
-            title={item.strMeal} 
-            url={item.strMealThumb} 
-            onPress={() => handleMealPress(item.idMeal)} 
+            title={item.strMeal}
+            url={item.strMealThumb}
+            onPress={() => handleMealPress(item.idMeal)}
         />
     );
 
@@ -69,7 +71,7 @@ const CategoryFoodsScreen: React.FC = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>{name} Recipes</Text>
+            <Text style={styles.title}>{name} {t("meal.recipes")}</Text>
             <FlatList
                 data={category}
                 renderItem={renderItem}

@@ -7,14 +7,21 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { wp, hp } from "@/helpers/screenResize";
 import { Colors } from "@/constants/Colors";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function CustomDrawerContent(props: any) {
+    const { language, setLanguage, t } = useLanguage();
     const theme = useColorScheme() ?? "light";
 
     const menuItems = [
-        { name: "Home", icon: "home", route: "index" },
-        { name: "Profile", icon: "person", route: "profile" },
-        { name: "Favorites", icon: "favorite", route: "favorites" },
+        { name: t("drawer.home"), icon: "home", route: "index" },
+        { name: t("drawer.profile"), icon: "person", route: "profile" },
+        { name: t("drawer.favorites"), icon: "favorite", route: "favorites" },
+    ];
+
+    const languages = [
+        { code: "en", label: t("languages.en") },
+        { code: "tr", label: t("languages.tr") },
     ];
 
     return (
@@ -42,6 +49,26 @@ export function CustomDrawerContent(props: any) {
                                 style={styles.itemIcon}
                             />
                             <Text style={styles.itemText}>{item.name}</Text>
+                        </Pressable>
+                    ))}
+                </View>
+
+                <View style={styles.separator} />
+
+                <View style={styles.languageSection}>
+                    <Text style={styles.languageTitle}>{t("languages.language")}</Text>
+                    {languages.map((lang) => (
+                        <Pressable
+                            key={lang.code}
+                            style={[styles.languageItem, language === lang.code && styles.languageItemActive]}
+                            onPress={() => setLanguage(lang.code as "en" | "tr")}
+                        >
+                            <Text style={[styles.languageText, language === lang.code && styles.languageTextActive]}>
+                                {lang.label}
+                            </Text>
+                            {language === lang.code && (
+                                <MaterialIcons name="check" size={wp(5)} color={Colors.primary} />
+                            )}
                         </Pressable>
                     ))}
                 </View>
@@ -94,5 +121,40 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: wp(4),
+    },
+    separator: {
+        height: 1,
+        backgroundColor: "#eee",
+        marginVertical: hp(2),
+        marginHorizontal: wp(4),
+    },
+    languageSection: {
+        padding: wp(4),
+    },
+    languageTitle: {
+        fontSize: wp(4),
+        fontWeight: "bold",
+        marginBottom: hp(2),
+        color: "#666",
+    },
+    languageItem: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingVertical: hp(1.5),
+        paddingHorizontal: wp(2),
+        borderRadius: wp(2),
+        marginBottom: hp(1),
+    },
+    languageItemActive: {
+        backgroundColor: Colors.primary + "10", // 10% opacity
+    },
+    languageText: {
+        fontSize: wp(4),
+        color: "#666",
+    },
+    languageTextActive: {
+        color: Colors.primary,
+        fontWeight: "bold",
     },
 });

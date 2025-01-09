@@ -13,6 +13,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { hp, wp } from "@/helpers/screenResize";
 import { MaterialIcons } from "@expo/vector-icons";
 import { toggleFavorite } from "@/store/redux/slices/favorites";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Ingredient {
     name: string;
@@ -20,6 +21,7 @@ interface Ingredient {
 }
 
 const MealDetailScreen: React.FC = () => {
+    const { t } = useLanguage();
     const { id } = useLocalSearchParams();
     const theme = useColorScheme() ?? "light";
     const dispatch = useAppDispatch();
@@ -178,7 +180,7 @@ const MealDetailScreen: React.FC = () => {
                     </ImageBackground>
                 </View>
                 <View style={styles.content}>
-                    <Text style={styles.sectionTitle}>Ingredients</Text>
+                    <Text style={styles.sectionTitle}>{t("meal.ingredients")}</Text>
                     <View style={styles.ingredientsContainer}>
                         {getIngredients(mealDetails).map((item, index) => (
                             <View key={index} style={styles.ingredientRow}>
@@ -187,7 +189,7 @@ const MealDetailScreen: React.FC = () => {
                             </View>
                         ))}
                     </View>
-                    <Text style={styles.sectionTitle}>Instructions</Text>
+                    <Text style={styles.sectionTitle}>{t("meal.instructions")}</Text>
                     <Text style={styles.description}>{mealDetails.strInstructions}</Text>
                 </View>
             </ScrollView>
