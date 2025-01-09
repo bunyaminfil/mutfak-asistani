@@ -15,7 +15,7 @@ export function CustomDrawerContent(props: any) {
 
     const menuItems = [
         { name: t("drawer.home"), icon: "home", route: "index" },
-        { name: t("drawer.profile"), icon: "person", route: "profile" },
+        // { name: t("drawer.profile"), icon: "person", route: "profile" },
         { name: t("drawer.favorites"), icon: "favorite", route: "favorites" },
         { name: t("drawer.market"), icon: "shopping-cart", route: "market" },
         { name: t("drawer.notifications"), icon: "notifications", route: "notifications" },
@@ -29,13 +29,13 @@ export function CustomDrawerContent(props: any) {
     return (
         <SafeAreaView style={styles.container}>
             <DrawerContentScrollView {...props}>
-                <Pressable style={styles.profileSection} onPress={() => props.navigation.navigate("profile")}>
+                {/* <Pressable style={styles.profileSection} onPress={() => props.navigation.navigate("profile")}>
                     <View style={styles.avatarContainer}>
                         <MaterialIcons name="person" size={wp(12)} color="#666" style={styles.avatarIcon} />
                     </View>
                     <Text style={styles.profileName}>John Doe</Text>
                     <Text style={styles.profileEmail}>john@example.com</Text>
-                </Pressable>
+                </Pressable> */}
 
                 <View style={styles.drawerItems}>
                     {menuItems.map((item, index) => (

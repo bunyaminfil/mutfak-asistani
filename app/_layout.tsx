@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { CustomDrawerContent } from "@/components/DrawerContent";
-import { Pressable } from "react-native";
+import { Pressable, Platform } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "@/store/redux";
@@ -39,7 +39,13 @@ export default function RootLayout() {
                         drawerContent={(props) => <CustomDrawerContent {...props} />}
                         screenOptions={({ navigation }) => ({
                             headerLeft: () => (
-                                <Pressable onPress={() => navigation.openDrawer()} style={{ margin: 16 }}>
+                                <Pressable 
+                                    onPress={() => navigation.openDrawer()} 
+                                    style={{ 
+                                        marginLeft: Platform.OS === "ios" ? 8 : 16,
+                                        padding: 8 
+                                    }}
+                                >
                                     <MaterialIcons
                                         name="menu"
                                         size={24}
@@ -56,13 +62,13 @@ export default function RootLayout() {
                                 drawerLabel: "Home",
                             }}
                         />
-                        <Drawer.Screen
+                        {/* <Drawer.Screen
                             name="profile"
                             options={{
                                 title: "Profile",
                                 drawerLabel: "Profile",
                             }}
-                        />
+                        /> */}
                         <Drawer.Screen
                             name="favorites"
                             options={{
