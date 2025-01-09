@@ -84,6 +84,16 @@ export default function RootLayout() {
                                 drawerItemStyle: { display: "none" },
                             }}
                         />
+                        <Drawer.Screen
+                            name="market"
+                            options={{
+                                title: "Shopping List",
+                                drawerLabel: "Shopping List",
+                                drawerIcon: ({ size, color }) => (
+                                    <MaterialIcons name="shopping-cart" size={size} color={color} />
+                                ),
+                            }}
+                        />
                         <Drawer.Screen name="+not-found" options={{ drawerItemStyle: { display: "none" } }} />
                     </Drawer>
                     <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />

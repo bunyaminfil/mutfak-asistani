@@ -17,6 +17,7 @@ export function CustomDrawerContent(props: any) {
         { name: t("drawer.home"), icon: "home", route: "index" },
         { name: t("drawer.profile"), icon: "person", route: "profile" },
         { name: t("drawer.favorites"), icon: "favorite", route: "favorites" },
+        { name: t("drawer.market"), icon: "shopping-cart", route: "market" },
     ];
 
     const languages = [

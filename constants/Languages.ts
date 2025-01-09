@@ -22,7 +22,15 @@ export const Languages = {
             home: "Home",
             favorites: "Favorites",
             profile: "Profile",
+            market: "Shopping List",
         },
+        market: {
+            title: "Shopping List",
+            itemName: "Item name",
+            quantity: "Quantity",
+            clearList: "Clear List",
+            addItem: "Add Item"
+        }
     },
     tr: {
         languages: {
@@ -47,7 +55,15 @@ export const Languages = {
             home: "Ana Sayfa",
             favorites: "Favoriler",
             profile: "Profil",
+            market: "Alışveriş Listesi",
         },
+        market: {
+            title: "Alışveriş Listesi",
+            itemName: "Ürün adı",
+            quantity: "Miktar",
+            clearList: "Listeyi Temizle",
+            addItem: "Ürün Ekle"
+        }
     },
 };
 
