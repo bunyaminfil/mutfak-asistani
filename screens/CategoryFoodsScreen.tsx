@@ -70,8 +70,10 @@ const CategoryFoodsScreen: React.FC = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>{name} {t("meal.recipes")}</Text>
+        <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
+            <Text style={styles.title}>
+                {name} {t("meal.recipes")}
+            </Text>
             <FlatList
                 data={category}
                 renderItem={renderItem}

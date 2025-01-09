@@ -67,7 +67,7 @@ const MarketScreen: React.FC = () => {
     );
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
             <Text style={styles.title}>{t("market.title")}</Text>
             
             <View style={styles.inputContainer}>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         flexDirection: "row",
-        padding: wp(4),
+        paddingHorizontal: wp(4),
         gap: wp(2),
     },
     input: {
@@ -161,6 +161,8 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: wp(4),
+        flex: 1,
+        flexWrap: "wrap",
     },
     quantityText: {
         fontSize: wp(3.5),

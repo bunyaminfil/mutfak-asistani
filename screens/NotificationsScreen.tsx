@@ -117,7 +117,7 @@ const NotificationsScreen: React.FC = () => {
     );
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
             <Text style={styles.title}>{t("notifications.title")}</Text>
 
             <View style={styles.addSection}>
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         padding: wp(4),
         backgroundColor: "#fff",
         borderRadius: wp(2),
-        margin: wp(4),
+        marginHorizontal: wp(4),
         elevation: 2,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
@@ -255,6 +255,7 @@ const styles = StyleSheet.create({
     },
     list: {
         flex: 1,
+        marginVertical: wp(4),
     },
     notificationItem: {
         flexDirection: "row",

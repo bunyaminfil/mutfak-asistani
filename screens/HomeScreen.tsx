@@ -65,13 +65,11 @@ const HomeScreen: React.FC = () => {
         },
         listContainer: {
             marginHorizontal: hp(1),
-            marginTop: hp(2),
         },
         sectionTitle: {
             fontSize: wp(5),
             fontWeight: "bold",
-            marginBottom: hp(2),
-            marginLeft: wp(2),
+            marginVertical: wp(4),
             alignSelf: "flex-start",
         },
     });
@@ -85,7 +83,7 @@ const HomeScreen: React.FC = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
             <FlatList
                 ListHeaderComponent={
                     <>

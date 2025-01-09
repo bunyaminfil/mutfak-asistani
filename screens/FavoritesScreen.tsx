@@ -13,7 +13,7 @@ import { IFavoriteMeal } from "@/types/favoriteTypes";
 const FavoritesScreen: React.FC = () => {
     const theme = useColorScheme() ?? "light";
     const router = useRouter();
-    const { favorites} = useAppSelector((state) => state.favoritesReducer);
+    const { favorites } = useAppSelector((state) => state.favoritesReducer);
     const { mealDetails } = useAppSelector((state) => state.foodsReducer);
 
     const handleMealPress = (mealId: string) => {
@@ -70,7 +70,7 @@ const FavoritesScreen: React.FC = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
             <Text style={styles.title}>Favorite Meals</Text>
             <FlatList
                 data={favorites}

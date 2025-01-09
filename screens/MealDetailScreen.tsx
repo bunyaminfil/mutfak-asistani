@@ -160,7 +160,7 @@ const MealDetailScreen: React.FC = () => {
     });
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
             <ScrollView>
                 <View style={styles.imageContainer}>
                     <Pressable style={styles.backButton} onPress={handleBack}>
