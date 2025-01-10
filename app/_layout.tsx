@@ -12,6 +12,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import { store } from "@/store/redux";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { configurePushNotifications } from "@/utils/notifications";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,6 +27,13 @@ export default function RootLayout() {
             SplashScreen.hideAsync();
         }
     }, [loaded]);
+
+    useEffect(() => {
+        const unsubscribe = configurePushNotifications();
+        return () => {
+            if (unsubscribe) unsubscribe();
+        };
+    }, []);
 
     if (!loaded) {
         return null;

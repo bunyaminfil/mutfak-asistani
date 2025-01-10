@@ -22,7 +22,28 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.benj.asistan"
+      "package": "com.benj.asistan",
+      "sound": {
+        "name": "notification",
+        "path": "./assets/notification.wav"
+      },
+      "permissions": [
+        "NOTIFICATIONS",
+        "SCHEDULE_EXACT_ALARM",
+        "USE_EXACT_ALARM",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "WAKE_LOCK"
+      ],
+      "useNextNotificationsApi": true,
+      "notification": {
+        "icon": "./assets/icon.png",
+        "color": "#ffffff",
+        "androidMode": "default",
+        "androidCollapsedTitle": "Mutfak Asistani",
+        "androidSound": "notification.wav",
+        "androidImportance": "max"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +52,16 @@
       "eas": {
         "projectId": "57ab7060-9372-45d0-b45a-e1d25732a79c"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#ffffff",
+          "sounds": ["./assets/notification.wav"]
+        }
+      ]
+    ]
   }
 }
