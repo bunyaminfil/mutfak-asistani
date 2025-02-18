@@ -33,7 +33,7 @@ With Mutfak Asistanı, you can streamline meal planning, never forget shopping e
 
 A brief description about this project.
 
-<div style="display: flex; flex-wrap: wrap; margin: 8px;">
+<div style="display: flex; flex-wrap: wrap;">
    <img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg" alt="Home" width="250"/>
    <img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/menu.jpeg" alt="Menu" width="250"/>
    <img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/recipes.jpeg" alt="Recipes" width="250"/>
