@@ -33,7 +33,6 @@ With Mutfak Asistanı, you can streamline meal planning, never forget shopping e
 
 Bu proje hakkında kısa bir açıklama.
 
-<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg" alt="Proje Resmi" width="400"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg" alt="Proje Resmi" width="250"/>
 
-![Proje Resmi](https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg)
 
