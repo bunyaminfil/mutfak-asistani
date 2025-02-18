@@ -31,8 +31,14 @@ With Mutfak Asistanı, you can streamline meal planning, never forget shopping e
 
 # Proje
 
-Bu proje hakkında kısa bir açıklama.
+A brief description about this project.
 
-<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg" alt="Proje Resmi" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/home.jpeg" alt="Home" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/menu.jpeg" alt="Menu" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/recipes.jpeg" alt="Recipes" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/recipeDetails.jpeg" alt="Recipe Details" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/favs.jpeg" alt="Favories" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/shopping.jpeg" alt="Shopping" width="250"/>
+<img src="https://github.com/bunyaminfil/mutfak-asistani/blob/main/assets/images/notifications.jpeg" alt="Notifications" width="250"/>
 
 
