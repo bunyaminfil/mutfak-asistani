@@ -29,4 +29,4 @@ With Mutfak Asistanı, you can streamline meal planning, never forget shopping e
     npx expo start
    ```
 
-![Proje Resmi](https://github.com/kullaniciAdi/repoAdi/blob/main/images/logo.png)
+![Proje Resmi](https://github.com/kullaniciAdi/repoAdi/blob/main/images/icon.png)
